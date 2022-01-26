@@ -32,6 +32,7 @@ export const CardFilter = ({ className }) => {
       onChange={handleSearch}
       placeholder="Filter cards..."
       className={cn("xl:w-1/4 md:w-1/2 w-10/12", className)}
+      autoFocus
     />
   );
 };

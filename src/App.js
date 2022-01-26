@@ -11,7 +11,7 @@ import { CardEdit } from "./features/cards/CardEdit";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" id="main">
         <Routes>
           <Route
             path="/"
