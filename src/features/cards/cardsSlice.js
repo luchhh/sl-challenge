@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createEntityAdapter } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -11,6 +11,7 @@ const cardsAdapter = createEntityAdapter({
 const initialState = cardsAdapter.getInitialState({
   status: "idle",
   error: null,
+  filter: "",
 });
 
 //TODO: delete delay to test states
@@ -24,6 +25,9 @@ const cardsSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
+    filterUpdated(state, action) {
+      state.filter = action.payload;
+    },
     cardUpdated(state, action) {},
     cardRemoved(state, action) {},
   },
@@ -43,7 +47,7 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { cardUpdated, cardRemoved } = cardsSlice.actions;
+export const { filterUpdated, cardUpdated, cardRemoved } = cardsSlice.actions;
 export default cardsSlice.reducer;
 
 export const {
@@ -51,3 +55,12 @@ export const {
   selectById: selectCardById,
   selectIds: selectCardsIds,
 } = cardsAdapter.getSelectors((state) => state.cards);
+
+export const selectCardsByFilter = createSelector(
+  [selectAllCards, (state) => state.cards.filter],
+  (cards, filter) => {
+    return cards
+      .filter((card) => card.name.toUpperCase().includes(filter.toUpperCase()))
+      .map((card) => card._id);
+  }
+);
