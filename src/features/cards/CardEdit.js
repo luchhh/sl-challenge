@@ -17,6 +17,7 @@ export const CardEdit = ({ className }) => {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+  //TODO: find a more elegant way
   //custom hook to handle direct access to edit page
   //for some reason selectCardById selector was not reloading when cards were fetched
   useEffect(() => {
