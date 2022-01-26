@@ -18,6 +18,7 @@ export const Button = ({
   isDisabled,
   heightClass = "lg",
   className = "",
+  ...props
 }) => {
   return (
     <button
@@ -30,6 +31,7 @@ export const Button = ({
       )}
       disabled={isDisabled}
       onClick={onClick}
+      {...props}
     >
       {children}
     </button>

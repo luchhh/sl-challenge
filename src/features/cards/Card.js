@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCardById } from "./cardsSlice";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+import { CardDeleteModal } from "./CardDeleteModal";
 
 export const CardBanner = ({
   imageUrl,
@@ -34,6 +35,7 @@ export const CardBanner = ({
 
 export const Card = ({ cardId }) => {
   const card = useSelector((state) => selectCardById(state, cardId));
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <article
       className="shadow-lg group container rounded-md bg-white max-w-sm flex flex-col justify-center items-center mx-auto"
@@ -49,7 +51,19 @@ export const Card = ({ cardId }) => {
         <Link to={`/edit/${card._id}`}>
           <i className="text-2xl float-left las la-edit"></i>
         </Link>
-        <i className="text-2xl float-right las la-trash"></i>
+        <i
+          className="text-2xl float-right las la-trash"
+          onClick={() => {
+            setIsModalOpen(true);
+          }}
+        ></i>
+        <CardDeleteModal
+          cardId={cardId}
+          isOpen={isModalOpen}
+          onRequestClose={() => {
+            setIsModalOpen(false);
+          }}
+        />
       </div>
     </article>
   );

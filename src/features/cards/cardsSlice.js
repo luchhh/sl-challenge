@@ -29,7 +29,7 @@ const cardsSlice = createSlice({
       state.filter = action.payload;
     },
     cardUpdated: cardsAdapter.updateOne,
-    cardRemoved(state, action) {},
+    cardRemoved: cardsAdapter.removeOne,
   },
   extraReducers(builder) {
     builder
