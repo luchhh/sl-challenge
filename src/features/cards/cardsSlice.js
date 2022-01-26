@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createEntityAdapter } from "@reduxjs/toolkit";
-import axios from "axios";
+import { client } from "../../lib/client";
 
 const cardsAdapter = createEntityAdapter({
   selectId: (card) => card._id,
@@ -16,9 +16,9 @@ const initialState = cardsAdapter.getInitialState({
 
 //TODO: delete delay to test states
 export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
-  const { data } = await axios.get("/cards.json");
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const { data } = await client.get("/cards.json");
   return data;
+  //await new Promise((resolve) => setTimeout(resolve, 1000));
 });
 
 const cardsSlice = createSlice({
