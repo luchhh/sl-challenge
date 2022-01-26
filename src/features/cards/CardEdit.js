@@ -33,8 +33,16 @@ export const CardEdit = ({ className }) => {
 
   const dispatch = useDispatch();
 
-  const onNameChanged = (e) => setName(e.target.value);
-  const onImageUrlChanged = (e) => setImageUrl(e.target.value);
+  const onNameChanged = (e) => {
+    setName(e.target.value);
+    setError("");
+    setMessage("");
+  };
+  const onImageUrlChanged = (e) => {
+    setImageUrl(e.target.value);
+    setError("");
+    setMessage("");
+  };
 
   const onSaveCardClicked = () => {
     if (name && imageUrl) {
