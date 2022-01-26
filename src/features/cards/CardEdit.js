@@ -80,7 +80,11 @@ export const CardEdit = ({ className }) => {
             <CardBanner imageUrl={imageUrl} />
           </div>
         </form>
-        <PrimaryButton className="mt-6" onClick={onSaveCardClicked}>
+        <PrimaryButton
+          className="mt-6"
+          onClick={onSaveCardClicked}
+          trackName="edit/save"
+        >
           Save Card
         </PrimaryButton>
       </section>

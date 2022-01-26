@@ -17,7 +17,7 @@ const initialState = cardsAdapter.getInitialState({
 //TODO: delete delay to test states
 export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
   const { data } = await axios.get("/cards.json");
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return data;
 });
 
@@ -30,6 +30,7 @@ const cardsSlice = createSlice({
     },
     cardUpdated: cardsAdapter.updateOne,
     cardRemoved: cardsAdapter.removeOne,
+    onClick: (state, action) => {},
   },
   extraReducers(builder) {
     builder
@@ -47,7 +48,8 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { filterUpdated, cardUpdated, cardRemoved } = cardsSlice.actions;
+export const { filterUpdated, cardUpdated, cardRemoved, onClick } =
+  cardsSlice.actions;
 export default cardsSlice.reducer;
 
 export const {

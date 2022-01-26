@@ -4,6 +4,8 @@ import { selectCardById } from "./cardsSlice";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 import { CardDeleteModal } from "./CardDeleteModal";
+import { Button } from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export const CardBanner = ({
   imageUrl,
@@ -36,6 +38,8 @@ export const CardBanner = ({
 export const Card = ({ cardId }) => {
   const card = useSelector((state) => selectCardById(state, cardId));
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <article
       className="shadow-lg group container rounded-md bg-white max-w-sm flex flex-col justify-center items-center mx-auto"
@@ -48,15 +52,22 @@ export const Card = ({ cardId }) => {
         <span className="uppercase text-sm">{card.name}</span>
       </div>
       <div className="w-full py-2 px-4 bg-white rounded-b-md">
-        <Link to={`/edit/${card._id}`}>
+        <Button
+          className="float-left"
+          trackName="edit/attempt"
+          onClick={() => navigate(`/edit/${card._id}`)}
+        >
           <i className="text-2xl float-left las la-edit"></i>
-        </Link>
-        <i
-          className="text-2xl float-right las la-trash"
+        </Button>
+        <Button
+          className="float-right"
+          trackName="delete/attempt"
           onClick={() => {
             setIsModalOpen(true);
           }}
-        ></i>
+        >
+          <i className="text-2xl las la-trash"></i>
+        </Button>
         <CardDeleteModal
           cardId={cardId}
           isOpen={isModalOpen}
