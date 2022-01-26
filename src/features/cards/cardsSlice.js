@@ -5,7 +5,7 @@ import axios from "axios";
 
 const cardsAdapter = createEntityAdapter({
   selectId: (card) => card._id,
-  sortComparer: (a, b) => b.name.localeCompare(a.name),
+  sortComparer: (a, b) => a.name.localeCompare(b.name),
 });
 
 const initialState = cardsAdapter.getInitialState({
