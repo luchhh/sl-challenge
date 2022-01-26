@@ -1,13 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import cn from "classnames";
 import { Input } from "../../components/Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterUpdated } from "./cardsSlice";
 import debounce from "lodash.debounce";
 
 export const CardFilter = ({ className }) => {
   const dispatch = useDispatch();
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(
+    useSelector((state) => state.cards.filter)
+  );
 
   //debounce to avoid irrelevant searches
   const debouncedSearch = useMemo(() => {
