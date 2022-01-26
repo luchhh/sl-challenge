@@ -21,6 +21,7 @@ export const CardBanner = ({
             className={cn("w-full rounded-t object-contain", height, className)}
             alt={altText}
             src={imageUrl}
+            style={{ minWidth: "250px" }}
           />
         ) : (
           <div
@@ -28,6 +29,7 @@ export const CardBanner = ({
               "w-full rounded-t object-cover bg-gray-light",
               height
             )}
+            style={{ minWidth: "250px" }}
           />
         )}
       </div>
