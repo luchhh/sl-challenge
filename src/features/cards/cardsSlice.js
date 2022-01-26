@@ -14,11 +14,9 @@ const initialState = cardsAdapter.getInitialState({
   filter: "",
 });
 
-//TODO: delete delay to test states
 export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
   const { data } = await client.get("/cards.json");
   return data;
-  //await new Promise((resolve) => setTimeout(resolve, 1000));
 });
 
 const cardsSlice = createSlice({
