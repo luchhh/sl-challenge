@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCardsByFilter, selectCardsIds } from "./cardsSlice";
+import { selectCardsByFilter } from "./cardsSlice";
 import { Spinner } from "../../components/Spinner";
 import cn from "classnames";
 import { Card } from "./Card";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Label } from "../../components/form/Label";
@@ -7,14 +7,26 @@ import { Layout } from "../../components/Layout";
 import { PrimaryButton } from "../../components/PrimaryButton";
 import { Title } from "../../components/Title";
 import { CardBanner } from "./Card";
-import { cardUpdated, selectCardById } from "./cardsSlice";
+import { cardUpdated, selectAllCards } from "./cardsSlice";
 
 export const CardEdit = ({ className }) => {
   let params = useParams();
   const cardId = params.cardId;
-  const card = useSelector((state) => selectCardById(state, cardId));
-  const [name, setName] = useState(card.name);
-  const [imageUrl, setImageUrl] = useState(card.imageUrl);
+  const cards = useSelector(selectAllCards);
+
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
+  //custom hook to handle direct access to edit page
+  //for some reason selectCardById selector was not reloading when cards were fetched
+  useEffect(() => {
+    if (cards.length > 0) {
+      const card = cards.find((card) => card._id == cardId);
+      setName(card.name);
+      setImageUrl(card.imageUrl);
+    }
+  }, [cardId, cards]);
+
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
