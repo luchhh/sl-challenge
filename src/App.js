@@ -2,13 +2,15 @@ import React from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
-import { CardsList, CardListContainer } from "./features/cards/CardsList";
+import { CardsList } from "./features/cards/CardsList";
 import { Layout } from "./components/Layout";
+import { CardFilter } from "./features/cards/CardFilter";
 
 function App() {
   return (
     <Layout>
-      <CardsList />
+      <CardFilter />
+      <CardsList className="mt-12" />
     </Layout>
   );
 }

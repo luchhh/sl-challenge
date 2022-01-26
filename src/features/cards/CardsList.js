@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCardsIds } from "./cardsSlice";
+import { selectCardsByFilter, selectCardsIds } from "./cardsSlice";
 import { Spinner } from "../../components/Spinner";
 import cn from "classnames";
 import { Card } from "./Card";
@@ -26,8 +26,8 @@ export const CardListContainer = ({ className, children }) => {
   );
 };
 
-export const CardsList = () => {
-  const orderedCardIds = useSelector(selectCardsIds);
+export const CardsList = ({ className }) => {
+  const orderedCardIds = useSelector((state) => selectCardsByFilter(state));
   const cardStatus = useSelector((state) => state.cards.status);
   const error = useSelector((state) => state.cards.error);
 
@@ -37,7 +37,7 @@ export const CardsList = () => {
     content = <Spinner />;
   } else if (cardStatus === "succeeded") {
     content = orderedCardIds.map((cardId) => (
-      <CardListItem>
+      <CardListItem key={cardId}>
         <Card key={cardId} cardId={cardId} />
       </CardListItem>
     ));
@@ -46,8 +46,7 @@ export const CardsList = () => {
   }
 
   return (
-    <CardListContainer>
-      <h2>Cards</h2>
+    <CardListContainer className={className}>
       <div className={cn("flex flex-wrap justify-center")}>{content}</div>
     </CardListContainer>
   );
