@@ -50,12 +50,18 @@ export const CardDeleteModal = ({
         <div className="text-center mt-4">
           <SecondaryButton
             autoFocus
-            className={"mx-2 my-2"}
+            className="mx-2 my-2"
             onClick={onRequestClose}
+            trackName="delete/cancel"
           >
             cancel
           </SecondaryButton>
-          <PrimaryButton className={"mx-2 my-2"} onClick={onDeleteClicked}>
+          <PrimaryButton
+            className="mx-2 my-2"
+            onClick={onDeleteClicked}
+            trackName="delete/confirm"
+            trackProperties={{ extraproperty: "delete" }}
+          >
             delete
           </PrimaryButton>
         </div>

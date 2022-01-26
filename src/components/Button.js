@@ -1,7 +1,9 @@
 import React from "react";
 import cn from "classnames";
+import { store } from "../app/store";
+import { onClick as globlaClick } from "../features/cards/cardsSlice";
 
-function getHeightStyle(heightClass) {
+const getHeightStyle = (heightClass) => {
   switch (heightClass) {
     case "sm":
       return "font-semibold h-8 text-sm leading-none";
@@ -10,7 +12,7 @@ function getHeightStyle(heightClass) {
     default:
       return "font-semibold h-12 text-lg";
   }
-}
+};
 
 export const Button = ({
   children,
@@ -18,6 +20,10 @@ export const Button = ({
   isDisabled,
   heightClass = "lg",
   className = "",
+  id,
+  name,
+  trackName,
+  trackProperties,
   ...props
 }) => {
   return (
@@ -30,7 +36,16 @@ export const Button = ({
         className
       )}
       disabled={isDisabled}
-      onClick={onClick}
+      onClick={(e) => {
+        trackName = trackName || id || name || "unknow";
+        onClick();
+        store.dispatch(
+          globlaClick({
+            eventName: trackName,
+            eventProperties: trackProperties,
+          })
+        );
+      }}
       {...props}
     >
       {children}
