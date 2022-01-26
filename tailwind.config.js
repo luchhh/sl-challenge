@@ -1,4 +1,5 @@
 module.exports = {
+  safelist: [/^my-/, /^mt-/, /^mb-/, /^mx-/, /^space-x-/, /^space-y-/],
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {

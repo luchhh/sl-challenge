@@ -28,7 +28,7 @@ const cardsSlice = createSlice({
     filterUpdated(state, action) {
       state.filter = action.payload;
     },
-    cardUpdated(state, action) {},
+    cardUpdated: cardsAdapter.updateOne,
     cardRemoved(state, action) {},
   },
   extraReducers(builder) {
