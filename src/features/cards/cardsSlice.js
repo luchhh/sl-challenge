@@ -5,7 +5,7 @@ import axios from "axios";
 
 const cardsAdapter = createEntityAdapter({
   selectId: (card) => card._id,
-  sortComparer: (a, b) => b.name.localeCompare(a.name),
+  sortComparer: (a, b) => a.name.localeCompare(b.name),
 });
 
 const initialState = cardsAdapter.getInitialState({
@@ -28,7 +28,7 @@ const cardsSlice = createSlice({
     filterUpdated(state, action) {
       state.filter = action.payload;
     },
-    cardUpdated(state, action) {},
+    cardUpdated: cardsAdapter.updateOne,
     cardRemoved(state, action) {},
   },
   extraReducers(builder) {

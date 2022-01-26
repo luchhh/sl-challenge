@@ -2,17 +2,21 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCardById } from "./cardsSlice";
 import cn from "classnames";
+import { Link } from "react-router-dom";
 
-export const CardBanner = ({ card, className, height = "h-product" }) => {
-  const { name, imageUrl } = card;
-
+export const CardBanner = ({
+  imageUrl,
+  altText = "",
+  className,
+  height = "h-product",
+}) => {
   return (
     <>
       <div className={cn(className, "relative")}>
         {imageUrl ? (
           <img
             className={cn("w-full rounded-t object-contain", height, className)}
-            alt={name}
+            alt={altText}
             src={imageUrl}
           />
         ) : (
@@ -33,13 +37,19 @@ export const Card = ({ cardId }) => {
   return (
     <article
       className="shadow-lg group container rounded-md bg-white max-w-sm flex flex-col justify-center items-center mx-auto"
-      key={card.id}
+      key={card._id}
     >
       <div className="w-full rounded-t-md">
-        <CardBanner card={card} />
+        <CardBanner imageUrl={card.imageUrl} altText={card.name} />
+      </div>
+      <div className="w-full py-2 px-4 bg-white">
+        <span className="uppercase text-sm">{card.name}</span>
       </div>
       <div className="w-full py-2 px-4 bg-white rounded-b-md">
-        <span className="uppercase text-sm">{card.name}</span>
+        <Link to={`/edit/${card._id}`}>
+          <i className="text-2xl float-left las la-edit"></i>
+        </Link>
+        <i className="text-2xl float-right las la-trash"></i>
       </div>
     </article>
   );
