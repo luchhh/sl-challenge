@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
 import cn from "classnames";
 import { CardDeleteModal } from "./CardDeleteModal";

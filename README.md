@@ -1,3 +1,14 @@
+## What is this
+
+See LIVE demo here: [SL Challenge](https://sl-challenge.herokuapp.com/) (it might have a cold start)
+
+It's a nice frontend challenge to handle some CRUD operations for cards items. It uses React + Typescript and Redux Toolkit to manage state. Also it has some side effects handled with redux-saga, the side effects just write some messages in the console but they are a nice prove of concept. Also there are a couple of tests implemented. The idea was to do this challenge within a normal working day
+
+Dificulties:
+
+- It should be prepared for a large number of cards
+- The filter value on the list should be memorized during navigation
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
