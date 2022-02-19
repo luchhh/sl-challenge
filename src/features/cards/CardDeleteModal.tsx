@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import { PrimaryButton } from "../../common/components/PrimaryButton";
 import { SecondaryButton } from "../../common/components/SecondaryButton";
 import { TitleSm } from "../../common/components/Title";
-import { cardRemoved, selectCardById } from "./state/cardsSlice";
+import { cardRemoved } from "./state/cardsSlice";
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
-import { useAppSelector } from "../../common/hooks/useAppSelector";
 import { buttonClicked } from "../../common/state/buttonClickedAction";
+import { useFindCardOrFail } from "./hooks/useFindCardOrFail";
 
 type CardDeleteModalProps = {
   cardId: string;
@@ -15,7 +15,6 @@ type CardDeleteModalProps = {
   onAfterOpen?: (obj?: OnAfterOpenCallbackOptions) => void;
 };
 
-//TODO: what to do with card not found case
 export const CardDeleteModal = ({
   cardId,
   isOpen,
@@ -40,7 +39,7 @@ export const CardDeleteModal = ({
     Modal.setAppElement("#main");
   }, []);
 
-  const card = useAppSelector((state) => selectCardById(state, cardId));
+  const card = useFindCardOrFail(cardId);
   const dispatch = useAppDispatch();
 
   const onConfirmClicked = () => {
@@ -52,7 +51,7 @@ export const CardDeleteModal = ({
     onRequestClose(e);
   };
 
-  return card ? (
+  return (
     <Modal
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
@@ -80,7 +79,5 @@ export const CardDeleteModal = ({
         </div>
       </section>
     </Modal>
-  ) : (
-    <></>
   );
 };
