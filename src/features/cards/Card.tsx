@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
-import { useAppSelector } from "../../common/hooks/useAppSelector";
-import { selectCardById } from "./state/cardsSlice";
 import cn from "classnames";
 import { CardDeleteModal } from "./CardDeleteModal";
 import { Button } from "../../common/components/Button";
 import { useNavigate } from "react-router-dom";
 import { buttonClicked } from "../../common/state/buttonClickedAction";
+import { useFindCardOrFail } from "./hooks/useFindCardOrFail";
 
 type CardBannerProps = {
   imageUrl?: string;
@@ -53,9 +52,8 @@ type CardProps = {
   cardId: string;
 };
 
-//TODO: what to do with card not found case
 export const Card = ({ cardId }: CardProps) => {
-  const card = useAppSelector((state) => selectCardById(state, cardId));
+  const card = useFindCardOrFail(cardId);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -69,7 +67,7 @@ export const Card = ({ cardId }: CardProps) => {
     navigate(`/edit/${cardId}`);
   };
 
-  return card ? (
+  return (
     <article
       className="shadow-lg group container rounded-md bg-white max-w-sm flex flex-col justify-center items-center mx-auto"
       key={card._id}
@@ -101,7 +99,5 @@ export const Card = ({ cardId }: CardProps) => {
         />
       </div>
     </article>
-  ) : (
-    <></>
   );
 };
