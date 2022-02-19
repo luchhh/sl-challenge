@@ -19,7 +19,7 @@ export const CardDeleteModal = ({
   cardId,
   isOpen,
   onRequestClose,
-  onAfterOpen = () => {},
+  onAfterOpen,
 }: CardDeleteModalProps) => {
   const customStyles = {
     content: {
