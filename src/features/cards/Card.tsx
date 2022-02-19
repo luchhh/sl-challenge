@@ -12,6 +12,7 @@ type CardBannerProps = {
   altText?: string;
   className?: string;
   heightClass?: string;
+  onClick?(e: React.MouseEvent<HTMLImageElement>): void;
 };
 
 export const CardBanner = ({
@@ -19,6 +20,7 @@ export const CardBanner = ({
   altText = "",
   className = "",
   heightClass = "h-product",
+  onClick,
 }: CardBannerProps) => {
   return (
     <>
@@ -27,12 +29,14 @@ export const CardBanner = ({
           <img
             className={cn(
               "w-full rounded-t object-contain",
+              onClick && "cursor-pointer",
               heightClass,
               className
             )}
             alt={altText}
             src={imageUrl}
             style={{ minWidth: "250px" }}
+            onClick={onClick}
           />
         ) : (
           <div
@@ -73,7 +77,13 @@ export const Card = ({ cardId }: CardProps) => {
       key={card._id}
     >
       <div className="w-full rounded-t-md">
-        <CardBanner imageUrl={card.imageUrl} altText={card.name} />
+        <CardBanner
+          imageUrl={card.imageUrl}
+          altText={card.name}
+          onClick={() => {
+            onEditAttempt(card._id);
+          }}
+        />
       </div>
       <div className="w-full py-2 px-4 bg-white">
         <span className="uppercase text-sm">{card.name}</span>
@@ -82,7 +92,7 @@ export const Card = ({ cardId }: CardProps) => {
         <Button
           className="float-left"
           onClick={() => {
-            onEditAttempt(card?._id);
+            onEditAttempt(card._id);
           }}
         >
           <i className="text-2xl float-left las la-edit"></i>
