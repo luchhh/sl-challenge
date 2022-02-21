@@ -2,7 +2,7 @@
 
 See LIVE demo here: [SL Challenge](https://sl-challenge.herokuapp.com/) (it might have a cold start)
 
-It's a nice frontend challenge to handle some CRUD operations for cards items. It uses React + Typescript and Redux Toolkit to manage state. Also it has some side effects handled with redux-saga, the side effects just write some messages in the console but they are a nice prove of concept. Also there are a couple of tests implemented. The idea was to do this challenge within a normal working day
+It's a nice frontend challenge to handle some CRUD operations for cards items. It uses React + Typescript and Redux Toolkit to manage state. Also it has some side effects handled with redux-saga, the side effects just write some messages in the console but they are a nice proof of concept. Also there are a couple of tests implemented. The idea was to do this challenge within a normal working day
 
 Dificulties:
 
