@@ -1,5 +1,5 @@
 import { takeEvery, call } from "typed-redux-saga";
-import { sendEvent } from "../../../common/lib/analytics2";
+import { sendEvent } from "../../../lib/analytics2";
 import { store } from "../../../store";
 import { cardRemoved, fetchCardsFulfilled } from "../state/cardsSlice";
 

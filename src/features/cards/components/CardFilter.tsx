@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
-import { Input } from "../../common/components/Input";
-import { useDebouncedFilter } from "./hooks/useDebouncedFilter";
+import { Input } from "../../../components/Input";
+import { useDebouncedFilter } from "../hooks/useDebouncedFilter";
 
 type CardFilterProps = { className?: string };
 

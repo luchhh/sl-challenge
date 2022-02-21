@@ -8,9 +8,9 @@ import userEvent from "@testing-library/user-event";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 // Import reducers
-import { fetchCards } from "../../features/cards/state/cardsSlice";
-import cardsReducer from "../../features/cards/state/cardsSlice";
-import { RootState } from "../../store";
+import { fetchCards } from "../features/cards/state/cardsSlice";
+import cardsReducer from "../features/cards/state/cardsSlice";
+import { RootState } from "../store";
 
 //custom render function for tests as suggested here
 //https://redux.js.org/usage/writing-tests#components

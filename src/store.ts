@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cardsReducer from "./features/cards/state/cardsSlice";
 import createSagaMiddleware from "redux-saga";
-import { trackEventSaga } from "./common/effects/trackEvent";
+import { trackEventSaga } from "./effects/trackEvent";
 import { countCardsSaga } from "./features/cards/effects/countCards";
 
 const sagaMiddleware = createSagaMiddleware();

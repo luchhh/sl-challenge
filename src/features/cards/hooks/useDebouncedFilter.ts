@@ -1,9 +1,9 @@
 import { useMemo, useEffect, useState } from "react";
 import { filterUpdated } from "../state/cardsSlice";
 import { debounce } from "lodash";
-import { useAppDispatch } from "../../../common/hooks/useAppDispatch";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { AppDispatch } from "../../../store";
-import { useAppSelector } from "../../../common/hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 
 //debounce to avoid irrelevant searches
 export const useDebouncedFilter = (): [

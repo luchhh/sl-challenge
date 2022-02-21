@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useAppDispatch } from "../../common/hooks/useAppDispatch";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { Link, useParams } from "react-router-dom";
-import { Label } from "../../common/components/form/Label";
-import { TextField } from "../../common/components/form/TextField";
-import { Layout } from "../../common/components/Layout";
-import { PrimaryButton } from "../../common/components/PrimaryButton";
-import { Title } from "../../common/components/Title";
-import { CardBanner } from "./Card";
+import { Label } from "../../components/form/Label";
+import { TextField } from "../../components/form/TextField";
+import { Layout } from "../../components/Layout";
+import { PrimaryButton } from "../../components/PrimaryButton";
+import { Title } from "../../components/Title";
+import { CardBanner } from "./components/Card";
 import { cardUpdated } from "./state/cardsSlice";
-import { buttonClicked } from "../../common/state/buttonClickedAction";
-import { useMessageErrorBundle } from "../../common/hooks/useMessageErrorBundle";
+import { buttonClicked } from "../../state/buttonClickedAction";
+import { useMessageErrorBundle } from "../../hooks/useMessageErrorBundle";
 import { useFindCardOrFailEffect } from "./hooks/useFindCardOrFailEffect";
 
 type CardEditProps = { className?: string };

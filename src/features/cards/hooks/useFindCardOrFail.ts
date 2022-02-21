@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../common/hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 import { selectCardById } from "../state/cardsSlice";
 
 export const useFindCardOrFail = (cardId: string) => {
