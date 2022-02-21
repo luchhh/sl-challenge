@@ -1,12 +1,12 @@
 import Modal, { OnAfterOpenCallbackOptions } from "react-modal";
 import React, { useEffect } from "react";
-import { PrimaryButton } from "../../common/components/PrimaryButton";
-import { SecondaryButton } from "../../common/components/SecondaryButton";
-import { TitleSm } from "../../common/components/Title";
-import { cardRemoved } from "./state/cardsSlice";
-import { useAppDispatch } from "../../common/hooks/useAppDispatch";
-import { buttonClicked } from "../../common/state/buttonClickedAction";
-import { useFindCardOrFail } from "./hooks/useFindCardOrFail";
+import { PrimaryButton } from "../../../components/PrimaryButton";
+import { SecondaryButton } from "../../../components/SecondaryButton";
+import { TitleSm } from "../../../components/Title";
+import { cardRemoved } from "../state/cardsSlice";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { buttonClicked } from "../../../state/buttonClickedAction";
+import { useFindCardOrFail } from "../hooks/useFindCardOrFail";
 
 type CardDeleteModalProps = {
   cardId: string;

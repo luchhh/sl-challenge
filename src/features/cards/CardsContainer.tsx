@@ -1,6 +1,6 @@
-import { CardsList } from "./CardsList";
-import { Layout } from "../../common/components/Layout";
-import { CardFilter } from "./CardFilter";
+import { CardsList } from "./components/CardsList";
+import { Layout } from "../../components/Layout";
+import { CardFilter } from "./components/CardFilter";
 
 export const CardsContainer = () => {
   return (

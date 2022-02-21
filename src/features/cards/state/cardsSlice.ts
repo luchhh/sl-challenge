@@ -2,7 +2,7 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createEntityAdapter } from "@reduxjs/toolkit";
 import { RootState } from "../../../store";
-import { client } from "../../../api/client";
+import { client } from "../../../lib/client";
 import { Card } from "../types";
 
 const cardsAdapter = createEntityAdapter<Card>({

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppSelector } from "../../../common/hooks/useAppSelector";
+import { useAppSelector } from "../../../hooks/useAppSelector";
 import { selectAllCards, selectCardById } from "../state/cardsSlice";
 import { Card } from "../types";
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { useAppSelector } from "../../common/hooks/useAppSelector";
-import { selectCardsByFilter } from "./state/cardsSlice";
-import { Spinner } from "../../common/components/Spinner";
+import { useAppSelector } from "../../../hooks/useAppSelector";
+import { selectCardsByFilter } from "../state/cardsSlice";
+import { Spinner } from "../../../components/Spinner";
 import cn from "classnames";
 import { Card } from "./Card";
 

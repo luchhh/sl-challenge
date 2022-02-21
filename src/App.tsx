@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CardEditContainer } from "./features/cards/CardEditContainer";
 import { CardsContainer } from "./features/cards/CardsContainer";
-import ErrorBoundary from "./common/components/ErrorBoundary";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (

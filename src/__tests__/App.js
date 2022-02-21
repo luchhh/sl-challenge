@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, userEvent, waitFor } from "../common/lib/testUtils";
+import { render, screen, userEvent, waitFor } from "../lib/testUtils";
 import App from "../App";
 import { rest } from "msw";
 import { setupServer } from "msw/node";

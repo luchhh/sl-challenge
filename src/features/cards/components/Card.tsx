@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useAppDispatch } from "../../common/hooks/useAppDispatch";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import cn from "classnames";
 import { CardDeleteModal } from "./CardDeleteModal";
-import { Button } from "../../common/components/Button";
+import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-import { buttonClicked } from "../../common/state/buttonClickedAction";
-import { useFindCardOrFail } from "./hooks/useFindCardOrFail";
+import { buttonClicked } from "../../../state/buttonClickedAction";
+import { useFindCardOrFail } from "../hooks/useFindCardOrFail";
 
 type CardBannerProps = {
   imageUrl?: string;
